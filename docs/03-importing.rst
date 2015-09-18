@@ -21,9 +21,10 @@ At the top of your Django project settings file, add the following code blocks.
     convertfiletovars()
 
 
-Finally, your can access set environment variables by doing using the following.
+Finally, you can access set environment variables by doing the following in your project settings file.
 
 .. code-block:: python
 
     SECRET_KEY = os.getenv('SECRET_KEY')
+
 
