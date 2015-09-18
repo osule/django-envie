@@ -25,9 +25,7 @@ def setup():
         test_runner = DjangoTestSuiteRunner()
 
     test_runner.setup_test_environment()
-    old_config = test_runner.setup_databases()
 
 
 def teardown():
-    test_runner.teardown_databases(old_config)
     test_runner.teardown_test_environment()
