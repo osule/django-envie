@@ -35,12 +35,12 @@ setup(
     test_suite="tests.runtests.start",
     classifiers=[
         "Operating System :: OS Independent",
-        "Development Status :: 0.0.1 Alpha",
+        "Development Status :: 3 - Alpha",
         "Environment :: Web Environment",
         "Framework :: Django",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 2.7.6",
+        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ]
