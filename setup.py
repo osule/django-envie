@@ -10,7 +10,7 @@ except ImportError:
 
 setup(
     name="django-envie",
-    version="1.0",
+    version="0.0.1",
     description="A module for Django that allows your app to"
     " use environment variables in a file",
     long_description="Django-envie helps your Django app to be"
@@ -35,7 +35,7 @@ setup(
     test_suite="tests.runtests.start",
     classifiers=[
         "Operating System :: OS Independent",
-        "Development Status :: 1.0.0 Alpha",
+        "Development Status :: 0.0.1 Alpha",
         "Environment :: Web Environment",
         "Framework :: Django",
         "Intended Audience :: Developers",
