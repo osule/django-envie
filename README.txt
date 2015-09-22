@@ -9,4 +9,7 @@ DB_PASSWORD = "Close, but you're way off."
 
 Checkout the documentation for this project on http//:django-envie.readthedocs.org
 
-COMING SOON .env.yml
+===================================================================================
+COMING SOON 
+===================================================================================
+Add support for .env.yml files
