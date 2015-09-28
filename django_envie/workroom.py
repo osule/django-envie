@@ -7,7 +7,15 @@ def convertfiletovars():
     Set environment variables from .env.py
     if it exists in the project dir.
     """
-    filepath = os.getcwd() + '/.env.py'
+    if search('^win', os.sys.platform):
+        # Check for platform
+        filepath = os.path.join(os.getcwd(), '.env.py')
+    else:
+        filepath = os.path.join(os.getcwd(), '.env.py')
+    if not os.path.isfile(filepath):
+        # Backtrack to root directory
+        os.chdir('..')
+        filepath = os.path.join('.env.py')
     if os.path.isfile(filepath):
         with open(filepath, 'r') as env_file:
             for setting in env_file:
