@@ -10,11 +10,11 @@ except ImportError:
 
 setup(
     name="django-envie",
-    version="0.0.2",
+    version="0.0.4",
     description="A module for Django that allows your app to"
     " use environment variables in a file",
     long_description="Django-envie helps your Django app to be"
-    " aware of environment variables set in a file.",
+    " aware of environment variables set in a .py or .yml file.",
     author="Oluwafemi Sule",
     author_email="oluwafemi.sule@andela.com",
     url="https://github.com/andela-osule/django-envie",
@@ -26,6 +26,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "Django>=1.8.0",
+        "PyYAML>=3.11"
     ],
     tests_require=[
         "nose",
