@@ -20,4 +20,4 @@ DB_USER = "homer_simpson"
 DB_PASSWORD = "Close, but you're way off."
 ```
 
-Checkout the documentation for this project at [Documentation](http//:django-envie.readthedocs.org "Read the documentation")
+Checkout the documentation for this project [here](http//:django-envie.readthedocs.org "Read the documentation")
