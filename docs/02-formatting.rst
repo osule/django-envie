@@ -13,7 +13,7 @@ You can place the .env.py file outside of your django project folder to keep up 
 
 For a .env.yml file, you can specify your configuration in the following format.
 
-    .. code-block::
+    .. code-block:: none
 
         secret_key:
             'not so secret'
