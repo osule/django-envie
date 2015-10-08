@@ -20,12 +20,8 @@ def convertfiletovars(fileext='py'):
                     match = search("(\w+)\s=\s\"(.*?)\"", setting)
                     env_var, config = match.groups()
                     os.environ[env_var] = config
-        if fileext == 'yml':
+        elif fileext == 'yml':
             from yaml import load
             environ_data = load(file(filepath, 'r'))
             for key, value in environ_data.iteritems():
                 os.environ[key] = value
-
-
-if __name__ == '__main__':
-    convertfiletovars()
