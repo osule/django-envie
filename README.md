@@ -29,7 +29,7 @@ In the project settings script, include this snippet:
 from django_envie.workroom import convertfiletovars
 
 
-convertfiletovars
+convertfiletovars()
 ```
 
 Use
