@@ -2,8 +2,7 @@ from re import search
 import os
 
 
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.getcwd()
 
 ERROR = "No environment file found in your project directory. Go ahead and create one."
 
@@ -19,7 +18,6 @@ def convertfiletovars():
     FLAG_ERROR = False
     res = None
     # check if env.py exists
-
     pyfilepath = os.path.join(BASE_DIR, PYENV)
     yamlfilepath = os.path.join(BASE_DIR, YAMLENV)
     if os.path.isfile(pyfilepath):
@@ -38,9 +36,9 @@ def convertfiletovars():
             FLAG_ERROR = True
 
     if FLAG_ERROR is True:
-        return ERROR
+        print ERROR
     if res:
-        return res.message
+        print res.message
 
 
 def parse_file(file_path):
