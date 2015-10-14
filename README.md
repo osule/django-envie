@@ -1,9 +1,9 @@
 Django-Envie
 ============
 
-This module helps to set environment variable for your Django application from a _.env.py_ file placed inside the project directory.
+This module helps to set environment variable for your Django application from a _.env.py_ or _.env.yml_ file placed inside the project directory.
 
-You can also place your _.env.py_ outside of the project directory where you have your _.git_ folder if you're using git for version control.
+An environment file (_.env.py_ or .env.yml_) is created either in your django project (inside the project directory) or repository root (outside the project directory).
 
 
 Installation
@@ -11,8 +11,6 @@ Installation
 ```
 pip install django-envie
 ```
-
-An environment file (_.env.py_ or .env.yml_) is created either in your django project (inside the project directory) or repository root (outside the project directory).
 
 
 Configuration
