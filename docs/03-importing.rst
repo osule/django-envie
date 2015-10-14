@@ -20,11 +20,7 @@ At the top of your Django project settings file, add the following code blocks.
 
     convertfiletovars()
 
-If you're making use of a .yml file for your configuration, call convertfiletovars as below:
-
-.. code-block:: python
-
-    convertfiletovars(fileext='yml') 
+If you're making use of a .yml file for your configuration, call convertfiletovars()
 
 
 Finally, you can access set environment variables by doing the following in your project settings file.
