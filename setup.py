@@ -10,7 +10,7 @@ except ImportError:
 
 setup(
     name="django-envie",
-    version="0.0.6",
+    version="0.0.8",
     description="A module for Django that allows your app to"
     " use environment variables in a file",
     long_description="Django-envie helps your Django app to be"
