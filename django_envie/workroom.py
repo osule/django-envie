@@ -36,9 +36,9 @@ def convertfiletovars():
             FLAG_ERROR = True
 
     if FLAG_ERROR is True:
-        print ERROR
+        return ERROR
     if res:
-        print res.message
+        return res.message
 
 
 def parse_file(file_path):
