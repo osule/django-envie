@@ -1,4 +1,4 @@
-Django-Envie
+Django-Envie ![Build badge](https://travis-ci.org/RainbowSeven/django-envie.svg?branch=master)
 ============
 
 This module helps to set environment variable for your Django application from a _.env.py_ or _.env.yml_ file placed inside the project directory.
