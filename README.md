@@ -37,4 +37,4 @@ Accessing environment variables anywhere can be done by using
 os.getenv('DB_NAME')
 ```
 
-Checkout the documentation for this project [here](http//:django-envie.readthedocs.org "Read the documentation")
+Checkout the documentation for this project [here](http://django-envie.readthedocs.org/en/latest/)
