@@ -1,4 +1,5 @@
-Django-Envie ![Build badge](https://travis-ci.org/RainbowSeven/django-envie.svg?branch=master)
+Django-Envie [![travis-ci]][travis]
+[![pypi-version-image]][pypi]
 ============
 
 This module helps to set environment variable for your Django application from a _.env.py_ or _.env.yml_ file placed inside the project directory.
@@ -38,3 +39,6 @@ os.getenv('DB_NAME')
 ```
 
 Checkout the documentation for this project [here](http://django-envie.readthedocs.org/en/latest/)
+
+[travis-ci]: https://travis-ci.org/RainbowSeven/django-envie.svg?branch=master
+[pypi-version-image]: https://img.shields.io/pypi/v/django_envie.svg
