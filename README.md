@@ -41,4 +41,6 @@ os.getenv('DB_NAME')
 Checkout the documentation for this project [here](http://django-envie.readthedocs.org/en/latest/)
 
 [travis-ci]: https://travis-ci.org/RainbowSeven/django-envie.svg?branch=master
+[travis]: https://travis-ci.org/RainbowSeven/django-envie?branch=master
 [pypi-version-image]: https://img.shields.io/pypi/v/django_envie.svg
+[pypi]: https://pypi.python.org/pypi/django-envie
