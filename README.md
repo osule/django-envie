@@ -1,6 +1,7 @@
-Django-Envie [![travis-ci]][travis]
-[![pypi-version-image]][pypi]
+Django-Envie
 ============
+[![travis-ci]][travis]
+[![pypi-version-image]][pypi]
 
 This module helps to set environment variable for your Django application from a _.env.py_ or _.env.yml_ file placed inside the project directory.
 
