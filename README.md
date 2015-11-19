@@ -43,13 +43,11 @@ os.getenv('DB_NAME')
 ## Setting up your environment variable for Continuous Integration
 ### CircleCI
 ```
-KEY = SECRET_KEY
-VALUE = my secret key
+KEY = VALUE
 ```
 ### TravisCI
 ```
-KEY = SECRET_KEY
-VALUE = "my secret key"
+KEY = "VALUE"
 ```
 
 Checkout the documentation for this project [here](http://django-envie.readthedocs.org/en/latest/)
