@@ -1,5 +1,6 @@
 # Django-Envie
 
+[![codeclimate]][codeclimate]
 [![travis-ci]][travis]
 [![pypi-version-image]][pypi]
 
@@ -56,3 +57,4 @@ Checkout the documentation for this project [here](http://django-envie.readthedo
 [travis]: https://travis-ci.org/RainbowSeven/django-envie?branch=master
 [pypi-version-image]: https://img.shields.io/pypi/v/django_envie.svg
 [pypi]: https://pypi.python.org/pypi/django-envie
+[codeclimate]: https://d3s6mut3hikguw.cloudfront.net/github/andela-osule/django-envie/badges/gpa.svg
