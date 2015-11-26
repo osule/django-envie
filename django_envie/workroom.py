@@ -4,7 +4,10 @@ import os
 
 BASE_DIR = os.getcwd()
 
-ERROR = "No environment file found in your project directory. Go ahead and create one."
+ERROR = """
+No environment file found in your project directory.
+Go ahead and create one.
+"""
 
 PYENV = '.env.py'
 YAMLENV = '.env.yml'
@@ -27,12 +30,14 @@ def convertfiletovars():
     else:
         # Backtrack to root directory
         pyfilepath = os.path.join(BASE_DIR, '..', PYENV)
+        is_pyfilepath = os.path.isfile(pyfilepath)
         yamlfilepath = os.path.join(BASE_DIR, '..', YAMLENV)
-        if os.path.isfile(pyfilepath):
+        is_yamlfilepath = os.path.isfile(yamlfilepath)
+        if is_pyfilepath:
             res = parse_file(pyfilepath)
-        elif os.path.isfile(yamlfilepath):
+        elif is_yamlfilepath:
             res = parse_file(yamlfilepath)
-        elif not os.path.isfile(pyfilepath) and not os.path.isfile(yamlfilepath):
+        elif not is_pyfilepath and not is_yamlfilepath:
             FLAG_ERROR = True
 
     if FLAG_ERROR is True:
