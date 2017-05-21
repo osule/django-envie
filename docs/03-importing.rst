@@ -6,7 +6,7 @@ It is easy to get started with this module.
 First, install this module in your virtual environment or base python installation.
 
 .. code-block:: none
-    
+
     pip install django_envie
 
 
@@ -28,5 +28,3 @@ Finally, you can access set environment variables by doing the following in your
 .. code-block:: python
 
     SECRET_KEY = os.getenv('SECRET_KEY')
-
-

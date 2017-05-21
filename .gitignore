@@ -28,3 +28,6 @@ coverage.xml
 docs/_build/djangovenv
 djangovenv/*
 .DS_Store
+
+# DB
+db.sqlite3
