@@ -11,6 +11,12 @@ You can place the .env.py file outside of your django project folder to keep up 
         DB_USER = "homer_simpson"
         DB_PASSWORD = "Close, but you're way off."
 
+Single quotes are also allowed:
+
+         .. code-block:: python
+
+            DBNAME = 'sector_seven'
+
 For a .env.yml file, you can specify your configuration in the following format::
 
     .. code-block:: none
