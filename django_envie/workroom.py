@@ -31,7 +31,7 @@ class Config():
             try:
                 pyfile = open(file_path, 'r')
                 for setting in pyfile.readlines():
-                    match = search("(\w+)\s=\s\"(.*?)\"", setting)
+                    match = search("(\w+)\s=\s[\"|\'](.*?)[\"|\']", setting)
                     key, value = match.groups()
                     os.environ.update({key: value})
                 return True
@@ -72,7 +72,7 @@ def convertfiletovars():
             elif Config.is_file(yamlfilepath):
                 FLAG_SUCCEED = Config.parse_file(yamlfilepath)
             elif not Config.is_file(pyfilepath) and not Config.is_file(
-                 yamlfilepath):
+                    yamlfilepath):
                 FLAG_ERROR = True
 
     if FLAG_ERROR:
