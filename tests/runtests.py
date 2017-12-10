@@ -1,6 +1,6 @@
 import os
 import sys
-import nose
+import pytest
 
 
 def start(argv=None):
@@ -8,13 +8,10 @@ def start(argv=None):
 
     if argv is None:
         argv = [
-            "nosetests", "--cover-branches", "--with-coverage",
-            "--cover-erase", "--verbose",
-            "--cover-package=django_envie",
+            "py.test", "---cov=django_envie", "tests/"
         ]
 
-    nose.run_exit(argv=argv,
-                  defaultTest=os.path.abspath(os.path.dirname(__file__)))
+    pytest.main([argv, os.path.abspath(os.path.dirname(__file__))])
 
 
 if __name__ == "__main__":

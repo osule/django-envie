@@ -31,9 +31,9 @@ DB_PASSWORD: "Close, but you're way off."
 
 In the project settings script, include this snippet:
 ```python
-from django_envie.workroom import convertfiletovars
+from django_envie import file_to_env
 
-convertfiletovars()
+file_to_env()
 ```
 
 ## Accessing your environment variables
@@ -53,8 +53,8 @@ KEY = "VALUE"
 
 Checkout the documentation for this project [here](http://django-envie.readthedocs.org/en/latest/)
 
-[travis-ci]: https://travis-ci.org/RainbowSeven/django-envie.svg?branch=master
-[travis]: https://travis-ci.org/RainbowSeven/django-envie?branch=master
+[travis-ci]: https://travis-ci.org/osule/django-envie.svg?branch=master
+[travis]: https://travis-ci.org/osule/django-envie?branch=master
 [pypi-version-image]: https://img.shields.io/pypi/v/django_envie.svg
 [pypi]: https://pypi.python.org/pypi/django-envie
-[codeclimate]: https://d3s6mut3hikguw.cloudfront.net/github/andela-osule/django-envie/badges/gpa.svg
+[codeclimate]: https://d3s6mut3hikguw.cloudfront.net/github/osule/django-envie/badges/gpa.svg

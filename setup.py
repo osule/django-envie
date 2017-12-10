@@ -25,11 +25,13 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        "Django>=1.8.0",
+        "Django>=1.8.0,<2.0.0",
         "PyYAML>=3.11"
     ],
     tests_require=[
-        "nose",
+        "pytest",
+        "pytest-cov",
+        "pytest-ordering",
         "coverage",
     ],
     zip_safe=False,
