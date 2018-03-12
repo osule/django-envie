@@ -12,7 +12,7 @@ def parse_ymlfile(filepath):
     try:
         with open(filepath, 'r') as configfile:
             environ_data = yaml.load(configfile)
-            for key, value in environ_data.iteritems():
+            for key, value in environ_data.items():
                 os.environ.update({key: value})
     except (IOError, ValueError) as exc:
         status, err = False, exc

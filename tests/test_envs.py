@@ -3,7 +3,7 @@
 import os
 import pytest
 
-from django_envie import basepath, Config, file_to_env
+from django_envie import basepath, parse, load_vars
 from django_envie.exceptions import ParseError
 
 
@@ -34,7 +34,7 @@ def test_configfile(configfile):
             file.write('SECRET_KEY : "Not so secret"')
         else:
             file.write('SECRET_KEY = "Not so secret"')
-    Config.parse(configfile)
+    parse(configfile)
 
     assert os.getenv('SECRET_KEY') == 'Not so secret'
 
@@ -44,16 +44,13 @@ def test_raising_error_for_missing_config_file():
     file isn't present
     """
     pyfilepath = basepath('.env.py')
-    pytest.raises(ParseError, Config.parse, pyfilepath)
+    pytest.raises(ParseError, parse, pyfilepath)
 
     ymlfilepath = basepath('.env.yml')
-    pytest.raises(ParseError, Config.parse, ymlfilepath)
+    pytest.raises(ParseError, parse, ymlfilepath)
 
     pyfilepath = basepath('..', '.env.py')
-    pytest.raises(ParseError, Config.parse, ymlfilepath)
+    pytest.raises(ParseError, parse, ymlfilepath)
 
     ymlfilepath = basepath('..', '.env.yml')
-    pytest.raises(ParseError, Config.parse, pyfilepath)
-
-    res = file_to_env()
-    assert 'No environment file' in res
+    pytest.raises(ParseError, parse, pyfilepath)

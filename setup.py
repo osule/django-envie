@@ -28,6 +28,9 @@ setup(
         "Django>=1.8.0,<2.0.0",
         "PyYAML>=3.11"
     ],
+    setup_requires=[
+        'pytest-runner',
+    ],
     tests_require=[
         "pytest",
         "pytest-cov",

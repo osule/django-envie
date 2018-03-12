@@ -1,9 +1,9 @@
 from .exceptions import ParseError
-from .config import Config, file_to_env, basepath
+from .functions import parse, load_vars, basepath
 
 __all__ = [
     'basepath',
     'ParseError',
-    'Config',
-    'file_to_env',
+    'parse',
+    'load_vars',
 ]
