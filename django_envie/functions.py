@@ -34,7 +34,6 @@ def parse(*args):
 
     parsed_data, parsed_error = functools.reduce(reduce_fn, args, ({}, False))
 
-    print(parsed_data, 'HERE')
     if not parsed_data:
         raise ParseError
     return parsed_data
