@@ -39,11 +39,12 @@ def parse(*args):
         raise ParseError
     return parsed_data
 
-def load_vars():
+def load_vars(environ=None):
     '''
     Set environment variables from .env.py or .env.yml
     if it exists in the project dir.
     '''
+    environ = environ if environ else os.environ
 
     try:
         variables = parse(
@@ -52,6 +53,6 @@ def load_vars():
             basepath('..', '.env.yml'),
             basepath('.env.yml'),
         )
-        inject(os.environ, variables)
+        inject(environ, variables)
     except ParseError as err:
         return err.message
