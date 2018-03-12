@@ -16,9 +16,9 @@ setup(
     long_description="Django-envie helps your Django app to be"
     " aware of environment variables set in a .py or .yml file.",
     author="Oluwafemi Sule",
-    author_email="oluwafemi.sule@andela.com",
-    url="https://github.com/andela-osule/django-envie",
-    download_url="https://github.com/andela-osule/django-envie.git",
+    author_email="oluwafemisule@outlook.com",
+    url="https://github.com/osule/django-envie",
+    download_url="https://github.com/osule/django-envie.git",
     license="MIT License",
     packages=[
         "django_envie",
@@ -41,7 +41,7 @@ setup(
     test_suite="tests.runtests.start",
     classifiers=[
         "Operating System :: OS Independent",
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
         "Framework :: Django",
         "Intended Audience :: Developers",
