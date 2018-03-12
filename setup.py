@@ -10,7 +10,7 @@ except ImportError:
 
 setup(
     name="django-envie",
-    version="0.0.9",
+    version="1.0.0",
     description="A module for Django that allows your app to"
     " use environment variables in a file",
     long_description="Django-envie helps your Django app to be"
@@ -25,11 +25,16 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        "Django>=1.8.0",
+        "Django>=1.8.0,<2.0.0",
         "PyYAML>=3.11"
     ],
+    setup_requires=[
+        'pytest-runner',
+    ],
     tests_require=[
-        "nose",
+        "pytest",
+        "pytest-cov",
+        "pytest-ordering",
         "coverage",
     ],
     zip_safe=False,

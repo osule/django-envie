@@ -1,76 +1,56 @@
 # -*- coding: utf-8 -*-
 
-from django.test import TestCase
-from django_envie.workroom import convertfiletovars, BASE_DIR, Config
-
 import os
+import pytest
+
+from django_envie import basepath, parse, load_vars
+from django_envie.exceptions import ParseError
 
 
-class DjangoEnvieTestCase(TestCase):
-    def test_py_inside_project(self):
-        """Test that a config file inside of the project folder
-        with the .py extension is detected
-        """
-        filepath = os.path.join('.env.py')
-        with open(filepath, 'w+') as f:
-            f.write('SECRET_KEY = "Not so secret"')
-        convertfiletovars()
-        secret_key = os.getenv('SECRET_KEY')
-        self.assertEqual(secret_key, 'Not so secret')
-        os.remove(filepath)
-        del os.environ['SECRET_KEY']
+@pytest.fixture(
+    scope="session",
+    params=[
+        ('.env.py',),
+        ('.env.yml',),
+        ('..', '.env.py',),
+        ('..', '.env.yml',),
+    ])
+def configfile(request):
+    filepath = basepath(*request.param)
+    
+    yield filepath
 
-    def test_yml_inside_project(self):
-        """Test that a config file inside the project folder
-        with the .yml extension is detected
-        """
-        filepath = os.path.join('.env.yml')
-        with open(filepath, 'w+') as f:
-            f.write('SECRET_KEY : "Not so secret"')
-        convertfiletovars()
-        secret_key = os.getenv('SECRET_KEY')
-        self.assertEqual(secret_key, 'Not so secret')
-        os.remove(filepath)
-        del os.environ['SECRET_KEY']
+    os.remove(filepath)
+    del os.environ['SECRET_KEY']
 
-    def test_py_outside_project(self):
-        """Test that a config file outside of the project folder
-        with the .py extension is detected
-        """
-        filepath = os.path.join(BASE_DIR, '..', '.env.py')
-        with open(filepath, 'w+') as f:
-            f.write('SECRET_KEY = "Not so secret"')
-        convertfiletovars()
-        secret_key = os.getenv('SECRET_KEY')
-        self.assertEqual(secret_key, 'Not so secret')
-        os.remove(filepath)
-        del os.environ['SECRET_KEY']
+@pytest.mark.second
+def test_configfile(configfile):
+    """Test that a config file is detected
+    """
+    is_yml = configfile.endswith('.yml')
 
-    def test_yml_outside_project(self):
-        """Test that a config file outside of the project folder
-        with the .py extension is detected
-        """
-        filepath = os.path.join(BASE_DIR, '..', '.env.yml')
-        with open(filepath, 'w+') as f:
-            f.write('SECRET_KEY : "Not so secret"')
-        convertfiletovars()
-        # import pdb; pdb.set_trace()
-        secret_key = os.getenv('SECRET_KEY')
-        self.assertEqual(secret_key, 'Not so secret')
-        os.remove(filepath)
-        del os.environ['SECRET_KEY']
+    with open(configfile, 'w') as file:
+        if is_yml:
+            file.write('SECRET_KEY : "Not so secret"')
+        else:
+            file.write('SECRET_KEY = "Not so secret"')
+    load_vars()
 
-    def test_error_is_raised_when_no_config_file(self):
-        """Test that an error message is returned when a config
-        file isn't present
-        """
-        pyfilepath = os.path.join(BASE_DIR, '.env.py')
-        ymlfilepath = os.path.join(BASE_DIR, '.env.yml')
-        self.assertEqual(IOError, type(Config.parse_file(pyfilepath)))
-        self.assertEqual(IOError, type(Config.parse_file(ymlfilepath)))
-        pyfilepath = os.path.join(BASE_DIR, '..', '.env.py')
-        ymlfilepath = os.path.join(BASE_DIR, '..', '.env.yml')
-        self.assertEqual(IOError, type(Config.parse_file(pyfilepath)))
-        self.assertEqual(IOError, type(Config.parse_file(ymlfilepath)))
-        res = convertfiletovars()
-        self.assertIn('No environment file', res)
+    assert os.getenv('SECRET_KEY') == 'Not so secret'
+
+@pytest.mark.first
+def test_raising_error_for_missing_config_file():
+    """Test that an error message is returned when a config
+    file isn't present
+    """
+    pyfilepath = basepath('.env.py')
+    pytest.raises(ParseError, parse, pyfilepath)
+
+    ymlfilepath = basepath('.env.yml')
+    pytest.raises(ParseError, parse, ymlfilepath)
+
+    pyfilepath = basepath('..', '.env.py')
+    pytest.raises(ParseError, parse, ymlfilepath)
+
+    ymlfilepath = basepath('..', '.env.yml')
+    pytest.raises(ParseError, parse, pyfilepath)
