@@ -31,9 +31,9 @@ DB_PASSWORD: "Close, but you're way off."
 
 In the project settings script, include this snippet:
 ```python
-from django_envie import file_to_env
+from django_envie import load_vars
 
-file_to_env()
+load_vars()
 ```
 
 ## Accessing your environment variables

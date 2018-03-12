@@ -10,30 +10,34 @@ from .exceptions import ParseError
 
 BASE_DIR = os.getcwd()
 
+def inject(env, variables):
+    env.update(variables)
 
 def basepath(*args):
     ''' Construct path relative to base directory '''
     return os.path.join(BASE_DIR, *args)
 
 def parse_using(extension):
-    parser_fn = get_parser(extension)
-
-    def parse_fn(filepath):
-        return parser_fn(filepath)
-
-    return parse_fn
+    return get_parser(extension)
 
 def parse(*args):
     ''' Parses file and sets environment key. '''
     def reduce_fn(cumm, currpath):
         file_extension = currpath.split('.')[-1]
-        status, _ = parse_using(file_extension)(currpath)
-        return cumm or status
+        data, error = parse_using(file_extension)(currpath)
 
-    parsed = functools.reduce(reduce_fn, args, False)
+        cumm_data, cumm_error = cumm
+        if not error:
+            cumm_data.update(data)
 
-    if not parsed:
+        return (cumm_data, cumm_error or error)
+
+    parsed_data, parsed_error = functools.reduce(reduce_fn, args, ({}, False))
+
+    print(parsed_data, 'HERE')
+    if not parsed_data:
         raise ParseError
+    return parsed_data
 
 def load_vars():
     '''
@@ -42,11 +46,12 @@ def load_vars():
     '''
 
     try:
-        parse(
-            basepath('.env.yml'),
-            basepath('..', '.env.yml'),
-            basepath('.env.py'),
+        variables = parse(
             basepath('..', '.env.py'),
+            basepath('.env.py'),
+            basepath('..', '.env.yml'),
+            basepath('.env.yml'),
         )
+        inject(os.environ, variables)
     except ParseError as err:
         return err.message

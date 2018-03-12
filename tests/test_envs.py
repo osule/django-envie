@@ -34,7 +34,7 @@ def test_configfile(configfile):
             file.write('SECRET_KEY : "Not so secret"')
         else:
             file.write('SECRET_KEY = "Not so secret"')
-    parse(configfile)
+    load_vars()
 
     assert os.getenv('SECRET_KEY') == 'Not so secret'
 

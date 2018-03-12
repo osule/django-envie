@@ -8,29 +8,24 @@ import yaml
 
 
 def parse_ymlfile(filepath):
-    status, err = True, None
     try:
         with open(filepath, 'r') as configfile:
-            environ_data = yaml.load(configfile)
-            for key, value in environ_data.items():
-                os.environ.update({key: value})
+            return yaml.load(configfile), None
     except (IOError, ValueError) as exc:
-        status, err = False, exc
-    return status, err
+        return exc, True
 
 
 def parse_pyfile(filepath):
-    status, err = True, None
     try:
         with open(filepath, 'r') as configfile:
+            dct = {}
             for setting in configfile:
                 match = re.search(r'(\w+)\s=\s[\"|\'](.*?)[\"|\']', setting)
                 key, value = match.groups()
-                os.environ.update({key: value})
+                dct[key] = value
+            return dct, None
     except (IOError, ValueError) as exc:
-        status, err = False, exc
-    return status, err
-
+        return exc, True
 
 PARSERS = {
     'yml': parse_ymlfile,
