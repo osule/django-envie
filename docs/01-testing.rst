@@ -6,6 +6,6 @@ cli:
 
     .. code-block:: none
 
-        $ pytest .
+        $ python setup.py test
 
 You should see the tests complete without errors!
