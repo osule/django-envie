@@ -25,7 +25,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        "Django>=1.8.0,<2.0.0",
+        "Django>=1.8.0,<3.0.0",
         "PyYAML>=3.11"
     ],
     setup_requires=[
